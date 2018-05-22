@@ -38,10 +38,12 @@ summary(elsalive$time)
 # Histogram in each subset#
 qplot(elsadead$time, geom = 'histogram', bins = 40)
 qplot(elsalive$time, geom = 'histogram', bins = 40)
+hist(elsadead$time)
+hist(elsalive$time)
 
 # Tabulate the outcome 'death'
 table(elsa_cf$death)
-prop.table(table(elsa_cf$death))
+round(prop.table(table(elsa_cf$death))*100, 2)
 
 ##############################################################
 ## 3. Survival and KM curve                                 ##
@@ -133,3 +135,4 @@ legend("bottomleft", inset=.05, title="KM per cognitive function quintiles",
 #logrank
 survdiff(Surv(elsa_cf$time, elsa_cf$death) ~ elsa_cf$q_cf1, rho=0)
 # Significant difference
+
